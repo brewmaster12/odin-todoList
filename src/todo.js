@@ -13,10 +13,4 @@ class Todo {
 }
 
 
-const brush = new Todo("brush", "clean the place", "12th", "high");
-
-console.log(brush);
-
-brush.toggleCheck();
-
-console.log(brush);
+export {Todo}
