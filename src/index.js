@@ -42,14 +42,14 @@ newProjectBtn.addEventListener("click", () => {
     dialog.showModal();
 });
 
-const enterProjectName = document.querySelector("#enterProjectName");
 
-
-const submitProject = document.getElementById("submitProject");
-submitProject.addEventListener("click", (event) => {
+/* Submit the project name */
+const projectNameField = document.querySelector("#projectNameField");
+const submitProjectBtn = document.getElementById("submitProjectBtn");
+submitProjectBtn.addEventListener("click", (event) => {
     event.preventDefault();
     dialog.close();
-    newProject(enterProjectName.value);
+    newProject(projectNameField.value);
 });
 
 
