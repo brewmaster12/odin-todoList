@@ -1,39 +1,6 @@
 import {makeProject} from "./project.js";
 
-
-function newProject(userInput) {
-
-    /* Make a new project */
-    const project = makeProject(userInput);
-
-
-    /* Print project to screen */
-    /* These will be appended to a div */
-    console.log(project.projectName);
-
-    console.log(project.todos);
-
-
-
-    /* Add event listener, on click =>  */
-    const todo = project.makeTodo(title, description, dueDate, priority);
-
-
-    /*  */
-    console.log(todo.checked);
-
-    todo.toggleCheck();
-
-    console.log(todo.checked);
-
-    console.log(project.todos)
-
-}
-
-/* Add event listener, on click => */
-/* newProject(userInput);
- */
-
+const content = document.getElementById("content");
 
 /* New project button, brings up form to enter project name */
 const newProjectBtn = document.getElementById("newProjectBtn");
@@ -42,15 +9,26 @@ newProjectBtn.addEventListener("click", () => {
     dialog.showModal();
 });
 
-
 /* Submit the project name */
-const projectNameField = document.querySelector("#projectNameField");
+const projectNameField = document.getElementById("projectNameField");
 const submitProjectBtn = document.getElementById("submitProjectBtn");
 submitProjectBtn.addEventListener("click", (event) => {
     event.preventDefault();
     dialog.close();
-    newProject(projectNameField.value);
+    /* Creates the project */
+    const project = makeProject(projectNameField.value);
+
+    /* Append the project to DOM */
+    const projectLi = document.createElement("li");
+    projectLi.textContent = `${project.projectName}`;
+    content.appendChild(projectLi);
+
+
 });
+
+
+/* Add event listener, on click =>  */
+/* const todo = project.makeTodo(title, description, dueDate, priority); */
 
 
 /*
