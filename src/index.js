@@ -1,30 +1,66 @@
 import {makeProject} from "./project.js";
 
-const content = document.getElementById("content");
+const projectsList = document.getElementById("projectsList");
 
 /* New project button, brings up form to enter project name */
 const newProjectBtn = document.getElementById("newProjectBtn");
-const dialog = document.querySelector("dialog");
+const projectDialog = document.getElementById("projectDialog");
 newProjectBtn.addEventListener("click", () => {
-    dialog.showModal();
+    projectDialog.showModal();
 });
+
+const todoDialog = document.getElementById("todoDialog");
+
+function submitProject(projectName) {
+    /* Create the project */
+    const project = makeProject(projectName);
+
+    const projectEntry = document.createElement("li");
+    projectEntry.textContent = `${project.projectName}`;
+
+    /* New todo button */
+    const newTodoBtn = document.createElement("button");
+    newTodoBtn.textContent = "New todo";
+    newTodoBtn.addEventListener("click", () => {
+        /* Brings up form to enter todo info */
+        todoDialog.showModal();
+    });
+
+    /* Append elements to DOM */
+    projectEntry.appendChild(newTodoBtn);
+    projectsList.appendChild(projectEntry);
+
+
+    
+
+    /* Submit todo button */
+    const submitTodoBtn = document.getElementById("submitTodoBtn");
+    submitTodoBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+        todoDialog.close();
+        const todo = project.makeTodo(todoName.value, description.value, dueDate.value, priority.value);
+        console.log(todo);
+    })
+
+};
+
+/* Submit todo info */
+const todoName = document.getElementById("todoName");
+const description = document.getElementById("description");
+const dueDate = document.getElementById("dueDate");
+const priority = document.getElementById("priority");
+
 
 /* Submit the project name */
 const projectNameField = document.getElementById("projectNameField");
 const submitProjectBtn = document.getElementById("submitProjectBtn");
 submitProjectBtn.addEventListener("click", (event) => {
     event.preventDefault();
-    dialog.close();
-    /* Creates the project */
-    const project = makeProject(projectNameField.value);
-
-    /* Append the project to DOM */
-    const projectLi = document.createElement("li");
-    projectLi.textContent = `${project.projectName}`;
-    content.appendChild(projectLi);
-
-
+    projectDialog.close();
+    submitProject(projectNameField.value)
 });
+
+submitProject("Default project");
 
 
 /* Add event listener, on click =>  */
