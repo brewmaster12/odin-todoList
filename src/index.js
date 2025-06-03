@@ -9,14 +9,49 @@ newProjectBtn.addEventListener("click", () => {
     projectDialog.showModal();
 });
 
+/* Submit the project name */
+const projectNameField = document.getElementById("projectNameField");
+const submitProjectBtn = document.getElementById("submitProjectBtn");
+submitProjectBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    projectDialog.close();
+    todosList.textContent = "";
+    submitProject(projectNameField.value);
+});
+
+/* Todo form info */
+const todoName = document.getElementById("todoName");
+const description = document.getElementById("description");
+const dueDate = document.getElementById("dueDate");
+const priority = document.getElementById("priority");
+
 const todoDialog = document.getElementById("todoDialog");
 
+const heading = document.getElementById("heading");
+
+const newTodoDiv = document.getElementById("newTodoDiv");
+
+const todosList = document.getElementById("todosList")
+
+
+/* Project function */
 function submitProject(projectName) {
     /* Create the project */
     const project = makeProject(projectName);
 
+    heading.textContent = `${project.projectName}`;
+
     const projectEntry = document.createElement("li");
-    projectEntry.textContent = `${project.projectName}`;
+    const projectBtn = document.createElement("button");
+    projectBtn.textContent = `${project.projectName}`;
+    /* Project button function */
+    projectBtn.addEventListener("click", () => {
+        heading.textContent = `${project.projectName}`;
+        newTodoDiv.textContent = "";
+        newTodoDiv.appendChild(newTodoBtn);
+        todosList.textContent = "";
+        printTodos();
+    });
 
     /* New todo button */
     const newTodoBtn = document.createElement("button");
@@ -27,44 +62,47 @@ function submitProject(projectName) {
     });
 
     /* Append elements to DOM */
-    projectEntry.appendChild(newTodoBtn);
+    projectEntry.appendChild(projectBtn);
     projectsList.appendChild(projectEntry);
 
+    newTodoDiv.textContent = "";
+    newTodoDiv.appendChild(newTodoBtn);
 
-    
 
     /* Submit todo button */
     const submitTodoBtn = document.getElementById("submitTodoBtn");
     submitTodoBtn.addEventListener("click", (event) => {
         event.preventDefault();
         todoDialog.close();
-        const todo = project.makeTodo(todoName.value, description.value, dueDate.value, priority.value);
-        console.log(todo);
+        submitTodo(todoName.value, description.value, dueDate.value, priority.value);
     })
 
+    /* Create and print todo */
+    function submitTodo(title, description, dueDate, priority) {
+        /* Create todo */
+        project.makeTodo(title, description, dueDate, priority);
+
+        /* Clear page */
+        todosList.textContent = "";
+
+        printTodos();
+    }
+
+    function printTodos() {
+        /* Print the array of todos in the project */
+        project.todos.forEach((todo) => {
+            const todoEntry = document.createElement("li");
+            todoEntry.textContent = `${todo.title}`;
+            todosList.appendChild(todoEntry);
+        })
+    }
 };
 
-/* Submit todo info */
-const todoName = document.getElementById("todoName");
-const description = document.getElementById("description");
-const dueDate = document.getElementById("dueDate");
-const priority = document.getElementById("priority");
 
-
-/* Submit the project name */
-const projectNameField = document.getElementById("projectNameField");
-const submitProjectBtn = document.getElementById("submitProjectBtn");
-submitProjectBtn.addEventListener("click", (event) => {
-    event.preventDefault();
-    projectDialog.close();
-    submitProject(projectNameField.value)
-});
 
 submitProject("Default project");
 
 
-/* Add event listener, on click =>  */
-/* const todo = project.makeTodo(title, description, dueDate, priority); */
 
 
 /*

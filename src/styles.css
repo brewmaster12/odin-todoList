@@ -1,0 +1,8 @@
+* {
+/*     border: 1px solid red;
+ */}
+
+#container {
+    display: grid;
+    grid-template-columns: 300px auto;
+}

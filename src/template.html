@@ -6,41 +6,48 @@
     <title>Document</title>
     <!--REMEMBER TO REMOVE WHEN BUNDLING-->
     <script src="index.js" type="module"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <button id="newProjectBtn">New project</button>
-    <dialog id="projectDialog">
-         <form>
-            <label for="projectNameField">Enter Project Name:</label>
-            <input type="text" id="projectNameField">
-            <button type="submit" id="submitProjectBtn">Submit</button>
-         </form>
-    </dialog>
 
-    <ul id="projectsList"></ul>
+<div id="container">
+    <div id="sidebar">
+        <button id="newProjectBtn">New project</button>    
+        <ul id="projectsList"></ul>
+    </div>
 
+    <div id="main-content">
+        <h1 id="heading"></h1>
+        <div id="newTodoDiv"></div>
+        <ul id="todosList"></ul>
+    </div>
+</div>
 
-    
-    <dialog id="todoDialog">
-         <form>
-            <label for="todoName">Enter Todo:</label>
-            <input type="text" id="todoName">
+<dialog id="todoDialog">
+    <form>
+        <label for="todoName">Enter Todo:</label>
+        <input type="text" id="todoName">
 
-            <label for="description">Description:</label>
-            <input type="text" id="description">
+        <label for="description">Description:</label>
+        <input type="text" id="description">
 
-            <label for="dueDate">Due date:</label>
-            <input type="text" id="dueDate">
+        <label for="dueDate">Due date:</label>
+        <input type="text" id="dueDate">
 
-            <label for="priority">Priority:</label>
-            <input type="text" id="priority">
+        <label for="priority">Priority:</label>
+        <input type="text" id="priority">
 
-            <button type="submit" id="submitTodoBtn">Submit</button>
-         </form>
-    </dialog>
+        <button type="submit" id="submitTodoBtn">Submit</button>
+    </form>
+</dialog>
 
-    <ul id="todosList"></ul>
-    
+<dialog id="projectDialog">
+    <form>
+        <label for="projectNameField">Enter Project Name:</label>
+        <input type="text" id="projectNameField">
+        <button type="submit" id="submitProjectBtn">Submit</button>
+    </form>
+</dialog>
+
 </body>
 </html> 
