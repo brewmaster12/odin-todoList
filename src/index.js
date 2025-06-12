@@ -144,15 +144,38 @@ function newProject(projectName) {
         project.todos.forEach((todo) => {
             const todoEntry = document.createElement("li");
             todoEntry.textContent = `${todo.title}`;
-            // Make checkbox for each todo
+            // Due date element
+            const dueDateElement = document.createElement("p");
+            dueDateElement.textContent = `Due date: ${todo.dueDate}`;
+            // Checkbox
             const checkBox = document.createElement("input");
             checkBox.type = "checkbox";
             checkBox.checked = todo.checked;
             checkBox.addEventListener("change", function() {
                 todo.checked = this.checked;
             });
+            // Description
+            const descriptionElement = document.createElement("p");
+            descriptionElement.textContent = `${todo.description}`;
+            // Expand todo button
+            const expandTodoBtn = document.createElement("button");
+            expandTodoBtn.textContent = "↓";
+            expandTodoBtn.addEventListener("click", () => {
+            });
+            // Delete todo button
+            const deleteTodoBtn = document.createElement("button");
+            deleteTodoBtn.textContent = "Delete";
+            deleteTodoBtn.addEventListener("click", () => {
+                project.todos.splice(project.todos.indexOf(todo), 1);
+                printTodos();
+            });
             // Append elements
             todoEntry.appendChild(checkBox);
+            todoEntry.appendChild(dueDateElement);
+            todoEntry.appendChild(expandTodoBtn);
+            todoEntry.appendChild(descriptionElement);
+            todoEntry.appendChild(deleteTodoBtn);
+
             todosList.appendChild(todoEntry);
             console.log(todo);
         })
@@ -163,5 +186,6 @@ newProject("Default project");
 
 /*
 - Delete todo
-- Click to expand and see description
+- Edit todo details
+- Click to expand and see details
 */
