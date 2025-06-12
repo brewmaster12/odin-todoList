@@ -64,29 +64,37 @@ function newProject(projectName) {
         todoForm.id = "todoForm"
 
         // Create form elements
+
+        // Todo title
         const todoNameLabel = document.createElement('label');
         todoNameLabel.textContent = 'Enter todo:';
         const todoName = document.createElement('input');
         todoName.type = 'text';
         todoName.id = 'todoName';
 
+        // Description
         const descriptionLabel = document.createElement('label');
         descriptionLabel.textContent = 'Description:';
-        const description = document.createElement('input');
-        description.type = 'text';
+        const description = document.createElement('textarea');
         description.id = 'description';
 
+        // Due date
         const dueDateLabel = document.createElement('label');
         dueDateLabel.textContent = 'Due date:';
         const dueDate = document.createElement('input');
-        dueDate.type = 'text';
+        dueDate.type = 'date';
         dueDate.id = 'dueDate';
 
+        // Priority input
         const priorityLabel = document.createElement('label');
         priorityLabel.textContent = 'Priority:';
-        const priority = document.createElement('input');
-        priority.type = 'text';
+        const priority = document.createElement('select');
         priority.id = 'priority';
+        priority.innerHTML = `
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+        `;
 
         // Submit button
         const submitTodoBtn = document.createElement("button");
@@ -126,7 +134,6 @@ function newProject(projectName) {
     function submitTodo(title, description, dueDate, priority) {
         /* Create todo */
         project.makeTodo(title, description, dueDate, priority);
-        
         printTodos();
     }
 
@@ -143,11 +150,11 @@ function newProject(projectName) {
             checkBox.checked = todo.checked;
             checkBox.addEventListener("change", function() {
                 todo.checked = this.checked;
-                console.log(todo.checked)
             });
-
+            // Append elements
             todoEntry.appendChild(checkBox);
             todosList.appendChild(todoEntry);
+            console.log(todo);
         })
     }
 };
@@ -155,8 +162,6 @@ function newProject(projectName) {
 newProject("Default project");
 
 /*
-- Checkbox for each todo
 - Delete todo
-- Priority
 - Click to expand and see description
 */
