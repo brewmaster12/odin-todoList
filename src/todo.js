@@ -5,11 +5,7 @@ class Todo {
         this.dueDate = dueDate;
         this.priority = priority;
         this.checked = false;
-    }
-
-    toggleCheck() {
-        this.checked = !this.checked;
-    }    
+    } 
 }
 
 export {Todo}

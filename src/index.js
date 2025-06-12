@@ -1,7 +1,9 @@
 import {makeProject} from "./project.js";
-/* import { bringUpTodoForm } from "./todoForm.js";
- */
+
 const projectsList = document.getElementById("projectsList");
+const heading = document.getElementById("heading");
+const newTodoDiv = document.getElementById("newTodoDiv");
+const todosList = document.getElementById("todosList");
 
 /* New project button, brings up form to enter project name */
 const newProjectBtn = document.getElementById("newProjectBtn");
@@ -17,23 +19,11 @@ submitProjectBtn.addEventListener("click", (event) => {
     event.preventDefault();
     projectDialog.close();
     todosList.textContent = "";
-    submitProject(projectNameField.value);
-    /* const project = makeProject(projectNameField.value) */
+    newProject(projectNameField.value);
 });
 
-/* Todo form info */
-/* const todoName = document.getElementById("todoName");
-const description = document.getElementById("description");
-const dueDate = document.getElementById("dueDate");
-const priority = document.getElementById("priority"); */
-
-const heading = document.getElementById("heading");
-const newTodoDiv = document.getElementById("newTodoDiv");
-const todosList = document.getElementById("todosList");
-
-
 /* Project function */
-function submitProject(projectName) {
+function newProject(projectName) {
     /* Create the project */
     const project = makeProject(projectName);
 
@@ -61,10 +51,8 @@ function submitProject(projectName) {
     /* Append elements to DOM */
     projectEntry.appendChild(projectBtn);
     projectsList.appendChild(projectEntry);
-
     newTodoDiv.textContent = "";
     newTodoDiv.appendChild(newTodoBtn);
-
 
     function bringUpTodoForm() {
         // Create dialog
@@ -138,37 +126,37 @@ function submitProject(projectName) {
     function submitTodo(title, description, dueDate, priority) {
         /* Create todo */
         project.makeTodo(title, description, dueDate, priority);
-
-        /* Clear page */
-        todosList.textContent = "";
-
+        
         printTodos();
     }
 
     function printTodos() {
+        /* Clear page */
+        todosList.textContent = "";
         /* Print the array of todos in the project */
         project.todos.forEach((todo) => {
             const todoEntry = document.createElement("li");
             todoEntry.textContent = `${todo.title}`;
+            // Make checkbox for each todo
+            const checkBox = document.createElement("input");
+            checkBox.type = "checkbox";
+            checkBox.checked = todo.checked;
+            checkBox.addEventListener("change", function() {
+                todo.checked = this.checked;
+                console.log(todo.checked)
+            });
+
+            todoEntry.appendChild(checkBox);
             todosList.appendChild(todoEntry);
         })
     }
 };
 
-submitProject("Default project");
-
-
-/*
-    NOTES 3/6 17:25
-    - Make new git branch
-    - Use this branch to re-write the code; do without submitProject or at least make it less unwieldy
-    - See comment in the submitProjectBtn
-*/
-
+newProject("Default project");
 
 /*
-    - setting todos as complete (check)
-    - changing todo priority
-    - edit todo
-    - delete todo
+- Checkbox for each todo
+- Delete todo
+- Priority
+- Click to expand and see description
 */
