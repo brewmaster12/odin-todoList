@@ -157,10 +157,16 @@ function newProject(projectName) {
             // Description
             const descriptionElement = document.createElement("p");
             descriptionElement.textContent = `${todo.description}`;
+            descriptionElement.style.display = "none";
             // Expand todo button
             const expandTodoBtn = document.createElement("button");
             expandTodoBtn.textContent = "↓";
             expandTodoBtn.addEventListener("click", () => {
+                if (descriptionElement.style.display === "block") {
+                    descriptionElement.style.display = "none";
+                } else {
+                    descriptionElement.style.display = "block";
+                };
             });
             // Delete todo button
             const deleteTodoBtn = document.createElement("button");
@@ -185,7 +191,6 @@ function newProject(projectName) {
 newProject("Default project");
 
 /*
-- Delete todo
 - Edit todo details
-- Click to expand and see details
+- Click to expand and see details (needs CSS)
 */
