@@ -101,6 +101,20 @@ function newProject(projectName) {
         submitTodoBtn.textContent = "Submit";
         submitTodoBtn.type = "submit";
         submitTodoBtn.id = "submitTodoBtn";
+        submitTodoBtn.addEventListener("click", (event) => {
+            event.preventDefault();
+            todoDialog.close();
+            submitTodo(todoName.value, description.value, dueDate.value, priority.value);
+        });
+
+        // Close button
+        const closeTodoFormBtn = document.createElement("button");
+        closeTodoFormBtn.textContent = "Close";
+        closeTodoFormBtn.addEventListener("click", (event) => {
+            event.preventDefault();
+            todoDialog.close();
+        });
+
 
         // Assemble form
         todoForm.appendChild(todoNameLabel);
@@ -112,6 +126,7 @@ function newProject(projectName) {
         todoForm.appendChild(priorityLabel);
         todoForm.appendChild(priority);
         todoForm.appendChild(submitTodoBtn);
+        todoForm.appendChild(closeTodoFormBtn);
 
         // Append form to dialog
         todoDialog.appendChild(todoForm);
@@ -121,13 +136,6 @@ function newProject(projectName) {
 
         // Show the dialog
         todoDialog.showModal();
-
-        // Form submission
-        submitTodoBtn.addEventListener("click", (event) => {
-            event.preventDefault();
-            todoDialog.close();
-            submitTodo(todoName.value, description.value, dueDate.value, priority.value);
-        });
     }
 
     /* Create and print todo */
@@ -192,5 +200,4 @@ newProject("Default project");
 
 /*
 - Edit todo details
-- Click to expand and see details (needs CSS)
 */
