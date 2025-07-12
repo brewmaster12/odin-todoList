@@ -1,8 +1,226 @@
+/* Reset and base styles */
 * {
-/*     border: 1px solid red;
- */}
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    min-height: 100vh;
+}
 
 #container {
-    display: grid;
-    grid-template-columns: 300px auto;
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar styles */
+#sidebar {
+    width: 250px;
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+}
+
+#newProjectBtn {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+#newProjectBtn:hover {
+    background-color: #2980b9;
+}
+
+#projectsList {
+    list-style: none;
+}
+
+#projectsList li {
+    margin-bottom: 10px;
+}
+
+#projectsList button {
+    width: 100%;
+    padding: 8px;
+    text-align: left;
+    background-color: #34495e;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#projectsList button:hover {
+    background-color: #3d566e;
+}
+
+/* Main content styles */
+#main-content {
+    flex: 1;
+    padding: 30px;
+}
+
+#heading {
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+#newTodoDiv {
+    margin-bottom: 20px;
+}
+
+#newTodoDiv button {
+    padding: 10px 15px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#newTodoDiv button:hover {
+    background-color: #219653;
+}
+
+/* Todo list styles */
+#todosList {
+    list-style: none;
+}
+
+#todosList li {
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+#todosList li input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+#todosList li p {
+    margin: 5px 0;
+    color: #555;
+}
+
+#todosList li button {
+    margin-left: 5px;
+    padding: 3px 8px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#todosList li button:first-of-type {
+    background-color: #3498db;
+    color: white;
+}
+
+#todosList li button:last-of-type {
+    background-color: #e74c3c;
+    color: white;
+}
+
+/* Dialog styles */
+dialog {
+    border: none;
+    border-radius: 8px;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+dialog form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+dialog label {
+    font-weight: bold;
+}
+
+dialog input, dialog textarea, dialog select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+dialog textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+dialog button {
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#submitProjectBtn, #submitTodoBtn {
+    background-color: #27ae60;
+    color: white;
+}
+
+#submitProjectBtn:hover, #submitTodoBtn:hover {
+    background-color: #219653;
+}
+
+dialog button:last-child {
+    background-color: #e74c3c;
+    color: white;
+}
+
+/* Priority indicators */
+.high-priority {
+    border-left: 4px solid #e74c3c;
+}
+
+.medium-priority {
+    border-left: 4px solid #f39c12;
+}
+
+.low-priority {
+    border-left: 4px solid #27ae60;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    #container {
+        flex-direction: column;
+    }
+
+    #sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    #main-content {
+        padding: 20px;
+    }
 }

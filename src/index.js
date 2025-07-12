@@ -115,7 +115,6 @@ function newProject(projectName) {
             todoDialog.close();
         });
 
-
         // Assemble form
         todoForm.appendChild(todoNameLabel);
         todoForm.appendChild(todoName);
@@ -168,7 +167,7 @@ function newProject(projectName) {
             descriptionElement.style.display = "none";
             // Expand todo button
             const expandTodoBtn = document.createElement("button");
-            expandTodoBtn.textContent = "↓";
+            expandTodoBtn.textContent = "Expand";
             expandTodoBtn.addEventListener("click", () => {
                 if (descriptionElement.style.display === "block") {
                     descriptionElement.style.display = "none";
