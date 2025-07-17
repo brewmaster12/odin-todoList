@@ -151,6 +151,7 @@ function newProject(projectName) {
         project.todos.forEach((todo) => {
             const todoEntry = document.createElement("li");
             todoEntry.textContent = `${todo.title}`;
+            todoEntry.classList.add(`${todo.priority}-priority`);
             // Due date element
             const dueDateElement = document.createElement("p");
             dueDateElement.textContent = `Due date: ${todo.dueDate}`;
@@ -199,4 +200,7 @@ newProject("Default project");
 
 /*
 - Edit todo details
+- Delete project button
+- CSS for priority
+- CSS for completed todos
 */

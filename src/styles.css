@@ -197,7 +197,7 @@ dialog button:last-child {
 
 /* Priority indicators */
 .high-priority {
-    border-left: 4px solid #e74c3c;
+    border-left: 4px solid #27ae60;
 }
 
 .medium-priority {
@@ -205,7 +205,7 @@ dialog button:last-child {
 }
 
 .low-priority {
-    border-left: 4px solid #27ae60;
+    border-left: 4px solid #e74c3c;
 }
 
 /* Responsive design */
