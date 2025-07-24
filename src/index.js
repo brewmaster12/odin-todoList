@@ -1,3 +1,4 @@
+import "./styles.css";
 import {makeProject} from "./project.js";
 
 const projectsList = document.getElementById("projectsList");
@@ -154,7 +155,7 @@ function newProject(projectName) {
             todoEntry.classList.add(`${todo.priority}-priority`);
             // Due date element
             const dueDateElement = document.createElement("p");
-            dueDateElement.textContent = `Due date: ${todo.dueDate}`;
+            dueDateElement.textContent = `Due: ${todo.dueDate}`;
             // Checkbox
             const checkBox = document.createElement("input");
             checkBox.type = "checkbox";
@@ -202,5 +203,4 @@ newProject("Default project");
 /*
 - Edit todo details
 - Delete project button
-- CSS for completed todos
 */
