@@ -161,6 +161,7 @@ function newProject(projectName) {
             checkBox.checked = todo.checked;
             checkBox.addEventListener("change", function() {
                 todo.checked = this.checked;
+                todoEntry.classList.toggle(`checked`);
             });
             // Description
             const descriptionElement = document.createElement("p");
@@ -201,6 +202,5 @@ newProject("Default project");
 /*
 - Edit todo details
 - Delete project button
-- CSS for priority
 - CSS for completed todos
 */
